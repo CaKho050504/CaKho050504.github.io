@@ -1,0 +1,180 @@
+/* Global Background Animations */
+
+/* Simple Gradient Background */
+.gradient-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 248, 220, 0.5) 0%, rgba(255, 250, 240, 0.7) 100%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Grid Background */
+.grid-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(255, 0, 0, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 0, 0, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    z-index: 0;
+    pointer-events: none;
+    animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(50px, 50px);
+    }
+}
+
+/* Glowing Orbs */
+.orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(60px);
+    pointer-events: none;
+    z-index: 0;
+    animation: orbFloat 15s ease-in-out infinite;
+}
+
+.orb1 {
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 0, 0, 0.2);
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.orb2 {
+    width: 200px;
+    height: 200px;
+    background: rgba(220, 20, 60, 0.15);
+    top: 60%;
+    right: 15%;
+    animation-delay: 5s;
+}
+
+.orb3 {
+    width: 250px;
+    height: 250px;
+    background: rgba(255, 68, 68, 0.1);
+    bottom: 20%;
+    left: 50%;
+    animation-delay: 10s;
+}
+
+@keyframes orbFloat {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    33% {
+        transform: translate(30px, -30px) scale(1.1);
+    }
+    66% {
+        transform: translate(-20px, 20px) scale(0.9);
+    }
+}
+
+/* Particles Background */
+.particles-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(255, 0, 0, 0.3);
+    border-radius: 50%;
+    animation: particleFloat 20s linear infinite;
+}
+
+@keyframes particleFloat {
+    0% {
+        transform: translateY(100vh) translateX(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100px) translateX(100px);
+        opacity: 0;
+    }
+}
+
+/* Geometric Lines */
+.geometric-lines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.line {
+    position: absolute;
+    background: rgba(255, 0, 0, 0.05);
+    animation: lineMove 30s linear infinite;
+}
+
+.line-horizontal {
+    width: 100%;
+    height: 1px;
+}
+
+.line-horizontal:nth-child(1) {
+    top: 20%;
+    animation-delay: 0s;
+}
+
+.line-horizontal:nth-child(2) {
+    top: 40%;
+    animation-delay: 7.5s;
+}
+
+.line-horizontal:nth-child(3) {
+    top: 60%;
+    animation-delay: 15s;
+}
+
+.line-horizontal:nth-child(4) {
+    top: 80%;
+    animation-delay: 22.5s;
+}
+
+@keyframes lineMove {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+
+
+

@@ -1,0 +1,178 @@
+/* Skills Section Styles */
+.skills-section {
+    background: #fff8dc;
+}
+
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.skill-category {
+    background: rgba(0, 255, 255, 0.08);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-xl);
+    box-shadow: 
+        0 4px 20px rgba(0, 255, 255, 0.2),
+        0 0 30px rgba(0, 255, 255, 0.1),
+        inset 0 0 30px rgba(0, 255, 255, 0.05);
+    transition: all var(--transition-base);
+    border: 2px solid rgba(0, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
+}
+
+.skill-category:hover {
+    transform: translateY(-5px) scale(1.02);
+    background: rgba(0, 255, 255, 0.12);
+    box-shadow: 
+        0 10px 40px rgba(0, 255, 255, 0.4),
+        0 0 60px rgba(0, 255, 255, 0.2),
+        inset 0 0 40px rgba(0, 255, 255, 0.08);
+    border-color: #00ffff;
+    border-width: 3px;
+}
+
+.skill-category-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.skill-category-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #00ffff, #00cccc);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000000;
+    font-size: 1.8rem;
+    box-shadow: 
+        0 4px 20px rgba(0, 255, 255, 0.6),
+        inset 0 0 20px rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    font-weight: 700;
+}
+
+.skill-category h3 {
+    font-size: 1.5rem;
+    color: #1a1a1a;
+    font-weight: 700;
+}
+
+.skill-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.skill-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.skill-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.skill-name {
+    font-weight: 700;
+    color: #1a1a1a;
+    font-size: 1.05rem;
+}
+
+.skill-level {
+    font-size: 0.95rem;
+    color: #000000;
+    font-weight: 700;
+    text-shadow: none;
+}
+
+.skill-bar {
+    height: 12px;
+    background: rgba(0, 255, 255, 0.15);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.skill-progress {
+    height: 100%;
+    background: linear-gradient(90deg, #00ffff, #00cccc, #00ffff);
+    background-size: 200% 100%;
+    border-radius: var(--radius-full);
+    transition: width 1s ease-out;
+    width: 0;
+    box-shadow: 
+        0 0 20px rgba(0, 255, 255, 0.8),
+        0 0 40px rgba(0, 255, 255, 0.4),
+        inset 0 0 10px rgba(255, 255, 255, 0.3);
+    animation: shimmer 2s linear infinite;
+    position: relative;
+}
+
+.skill-progress::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    animation: shine 2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
+@keyframes shine {
+    0%, 100% { transform: translateX(-100%); }
+    50% { transform: translateX(100%); }
+}
+
+.skill-item.animate .skill-progress {
+    width: var(--skill-width);
+}
+
+/* Skill Tags Style */
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    margin-top: var(--spacing-sm);
+}
+
+.skill-tag {
+    padding: var(--spacing-xs) var(--spacing-md);
+    background: rgba(0, 255, 255, 0.12);
+    border-radius: var(--radius-full);
+    font-size: 0.9rem;
+    color: #1a1a1a;
+    border: 1px solid rgba(0, 255, 255, 0.4);
+    transition: all var(--transition-fast);
+    font-weight: 600;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.8);
+}
+
+.skill-tag:hover {
+    background: #00ffff;
+    color: #000000;
+    border-color: #00ffff;
+    box-shadow: 
+        0 0 20px rgba(0, 255, 255, 0.8),
+        0 0 40px rgba(0, 255, 255, 0.4);
+    transform: translateY(-2px);
+    font-weight: 700;
+}
+

@@ -1,0 +1,373 @@
+/* Hobbies Banner Carousel Styles */
+
+.hobbies-banner-container {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.hobbies-banner-wrapper {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    margin-bottom: var(--spacing-md);
+    border: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+.hobbies-banner-track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.hobby-banner-slide {
+    min-width: 100%;
+    height: 100%;
+    position: relative;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.hobby-banner-slide.active {
+    opacity: 1;
+}
+
+.hobby-banner-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.hobby-banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4));
+}
+
+.hobby-banner-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: var(--spacing-md);
+    display: flex;
+    align-items: flex-end;
+    gap: var(--spacing-sm);
+    z-index: 2;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4), transparent);
+}
+
+.hobby-banner-icon {
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 255, 255, 0.2);
+    border: 2px solid rgba(0, 255, 255, 0.5);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    flex-shrink: 0;
+}
+
+.hobby-banner-icon i {
+    font-size: 1.5rem;
+    color: rgba(0, 255, 255, 0.9);
+}
+
+.hobby-banner-info {
+    flex: 1;
+    color: #ffffff;
+}
+
+.hobby-banner-name {
+    font-size: var(--font-size-xl);
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.hobby-banner-level {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: rgba(0, 255, 255, 0.2);
+    border: 1px solid rgba(0, 255, 255, 0.4);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-sm);
+    color: rgba(0, 255, 255, 0.9);
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+}
+
+.hobby-banner-description {
+    font-size: var(--font-size-sm);
+    line-height: 1.5;
+    margin-bottom: var(--spacing-xs);
+    opacity: 0.9;
+    max-width: 500px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.hobby-banner-activities {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.hobby-banner-activities .activity-tag {
+    padding: 0.25rem 0.75rem;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-sm);
+    color: #ffffff;
+}
+
+.hobby-banner-btn {
+    padding: 0.5rem 1.2rem;
+    background: rgba(0, 255, 255, 0.2);
+    border: 2px solid rgba(0, 255, 255, 0.5);
+    border-radius: var(--radius-md);
+    color: #ffffff;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    backdrop-filter: blur(10px);
+    margin-top: 0.5rem;
+}
+
+.hobby-banner-btn:hover {
+    background: rgba(0, 255, 255, 0.3);
+    border-color: rgba(0, 255, 255, 0.8);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.4);
+}
+
+/* Navigation Buttons */
+.hobby-banner-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45px;
+    height: 45px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(0, 255, 255, 0.4);
+    border-radius: 50%;
+    color: #ffffff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-base);
+}
+
+.hobby-banner-nav:hover {
+    background: rgba(0, 255, 255, 0.2);
+    border-color: rgba(0, 255, 255, 0.8);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.hobby-banner-prev {
+    left: 1rem;
+}
+
+.hobby-banner-next {
+    right: 1rem;
+}
+
+/* Dots Indicator */
+.hobby-banner-dots {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+    z-index: 10;
+}
+
+.hobby-banner-dots .hobby-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.hobby-banner-dots .hobby-dot:hover {
+    background: rgba(0, 255, 255, 0.6);
+    transform: scale(1.2);
+}
+
+.hobby-banner-dots .hobby-dot.active {
+    background: rgba(0, 255, 255, 0.9);
+    width: 30px;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+/* Thumbnails Container */
+.hobbies-thumbnails-container {
+    display: flex;
+    gap: var(--spacing-sm);
+    overflow-x: auto;
+    padding: var(--spacing-sm) 0;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 255, 255, 0.3) transparent;
+    justify-content: center;
+}
+
+.hobbies-thumbnails-container::-webkit-scrollbar {
+    height: 6px;
+}
+
+.hobbies-thumbnails-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 3px;
+}
+
+.hobbies-thumbnails-container::-webkit-scrollbar-thumb {
+    background: rgba(0, 255, 255, 0.3);
+    border-radius: 3px;
+}
+
+.hobby-thumbnail-item {
+    min-width: 100px;
+    height: 80px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transition: all var(--transition-base);
+    position: relative;
+    flex-shrink: 0;
+}
+
+.hobby-thumbnail-item:hover {
+    border-color: rgba(0, 255, 255, 0.5);
+    transform: scale(1.1);
+}
+
+.hobby-thumbnail-item.active {
+    border-color: rgba(0, 255, 255, 0.9);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+    transform: scale(1.05);
+}
+
+.hobby-thumbnail-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hobby-thumbnail-item .thumbnail-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity var(--transition-base);
+}
+
+.hobby-thumbnail-item:hover .thumbnail-overlay {
+    opacity: 1;
+}
+
+.hobby-thumbnail-item .thumbnail-overlay i {
+    color: rgba(0, 255, 255, 0.9);
+    font-size: 1.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hobbies-banner-wrapper {
+        height: 280px;
+    }
+
+    .hobby-banner-content {
+        padding: var(--spacing-sm);
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .hobby-banner-icon {
+        width: 45px;
+        height: 45px;
+    }
+
+    .hobby-banner-icon i {
+        font-size: 1.3rem;
+    }
+
+    .hobby-banner-name {
+        font-size: var(--font-size-lg);
+    }
+
+    .hobby-banner-description {
+        font-size: var(--font-size-xs);
+        -webkit-line-clamp: 2;
+    }
+
+    .hobby-banner-nav {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+
+    .hobby-banner-nav.hobby-banner-prev {
+        left: 0.5rem;
+    }
+
+    .hobby-banner-nav.hobby-banner-next {
+        right: 0.5rem;
+    }
+
+    .hobby-thumbnail-item {
+        min-width: 70px;
+        height: 55px;
+    }
+
+    .hobby-banner-activities {
+        gap: 0.3rem;
+    }
+
+    .hobby-banner-activities .activity-tag {
+        padding: 0.2rem 0.6rem;
+        font-size: var(--font-size-xs);
+    }
+
+    .hobby-banner-btn {
+        padding: 0.4rem 1rem;
+        font-size: var(--font-size-xs);
+    }
+}
+

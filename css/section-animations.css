@@ -1,0 +1,523 @@
+/* ========================================
+   PIXEL ANIMATIONS FOR ALL SECTIONS
+   ======================================== */
+
+/* Common Section Background Base */
+section {
+    position: relative;
+    overflow: hidden;
+}
+
+/* ========================================
+   ABOUT SECTION PIXEL EFFECTS
+   ======================================== */
+
+.about-section {
+    position: relative;
+}
+
+.about-pixel-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Diagonal Pixel Lines for About - DISABLED */
+.about-diagonal-lines {
+    display: none !important;  /* Tắt đường chéo */
+}
+
+@keyframes diagonal-move {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(40px, 40px);
+    }
+}
+
+/* Floating Pixels for About */
+.about-floating-pixels {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.about-pixel {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #00ffff;
+    opacity: 0.3;
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+    animation: about-float 20s ease-in-out infinite;
+    filter: brightness(1.2);
+    image-rendering: pixelated;
+}
+
+@keyframes about-float {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.5;             /* Tăng từ 0.3 → 0.5 */
+    }
+    50% {
+        transform: translate(100px, -100px) scale(1.8);  /* Tăng từ 1.5 → 1.8 */
+        opacity: 1;               /* Tăng từ 0.6 → 1 */
+    }
+}
+
+/* ========================================
+   SKILLS SECTION PIXEL EFFECTS
+   ======================================== */
+
+.skills-section {
+    position: relative;
+}
+
+.skills-pixel-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Hexagon Grid Pattern */
+.skills-hex-grid {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(30deg, transparent 25%, rgba(0, 255, 255, 0.12) 25%, rgba(0, 255, 255, 0.12) 27%, transparent 27%),
+        linear-gradient(-30deg, transparent 25%, rgba(0, 255, 255, 0.12) 25%, rgba(0, 255, 255, 0.12) 27%, transparent 27%),
+        linear-gradient(30deg, transparent 75%, rgba(0, 255, 255, 0.12) 75%, rgba(0, 255, 255, 0.12) 77%, transparent 77%),
+        linear-gradient(-30deg, transparent 75%, rgba(0, 255, 255, 0.12) 75%, rgba(0, 255, 255, 0.12) 77%, transparent 77%);
+    background-size: 40px 70px;
+    animation: hex-shift 20s linear infinite;
+}
+
+@keyframes hex-shift {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 40px 70px;
+    }
+}
+
+/* Orbiting Pixels */
+.skills-orbiting-pixels {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.orbit-pixel {
+    position: absolute;
+    width: 10px;                   /* Tăng từ 6px → 10px */
+    height: 10px;
+    background: #00ffff;
+    border-radius: 50%;
+    opacity: 0.8;                  /* Thêm opacity */
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);  /* Thêm glow mạnh */
+    animation: orbit-rotate 15s linear infinite;
+}
+
+@keyframes orbit-rotate {
+    0% {
+        transform: rotate(0deg) translateX(100px) rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg) translateX(100px) rotate(-360deg);
+    }
+}
+
+/* Skill Bar Glitch Effect */
+.skill-progress {
+    position: relative;
+}
+
+.skill-progress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 2px,
+        rgba(255, 255, 255, 0.1) 2px,
+        rgba(255, 255, 255, 0.1) 4px
+    );
+    pointer-events: none;
+}
+
+/* ========================================
+   PROJECTS SECTION PIXEL EFFECTS
+   ======================================== */
+
+.projects-section {
+    position: relative;
+}
+
+.projects-pixel-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Circuit Board Pattern */
+.projects-circuit-pattern {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(90deg, rgba(0, 255, 255, 0.08) 1px, transparent 1px),  /* Tăng từ 0.02 → 0.08 */
+        linear-gradient(0deg, rgba(0, 255, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 255, 0.15) 2px, transparent 2px),  /* Tăng từ 0.04 → 0.15, 1px → 2px */
+        linear-gradient(0deg, rgba(0, 255, 255, 0.15) 2px, transparent 2px);
+    background-size: 10px 10px, 10px 10px, 50px 50px, 50px 50px;
+    animation: circuit-flow 15s linear infinite;
+}
+
+@keyframes circuit-flow {
+    0% {
+        background-position: 0 0, 0 0, 0 0, 0 0;
+    }
+    100% {
+        background-position: 10px 10px, 10px 10px, 50px 50px, 50px 50px;
+    }
+}
+
+/* Data Streams */
+.projects-data-streams {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.data-stream {
+    position: absolute;
+    width: 4px;                    /* Tăng từ 2px → 4px */
+    height: 120px;                 /* Tăng từ 100px → 120px */
+    background: linear-gradient(to bottom, transparent, #00ffff, transparent);
+    animation: stream-flow 5s linear infinite;
+    opacity: 0.7;                  /* Tăng từ 0.3 → 0.7 */
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.6);  /* Thêm glow */
+}
+
+@keyframes stream-flow {
+    0% {
+        top: -100px;
+    }
+    100% {
+        top: 110%;
+    }
+}
+
+/* Glitch Bars */
+.projects-glitch-bars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch-bar {
+    position: absolute;
+    width: 100%;
+    height: 4px;                   /* Tăng từ 3px → 4px */
+    background: rgba(0, 255, 255, 0.8);  /* Tăng từ 0.5 → 0.8 */
+    opacity: 0;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);  /* Thêm glow */
+    animation: glitch-appear 4s infinite;
+}
+
+@keyframes glitch-appear {
+    0%, 94%, 100% {              /* Xuất hiện lâu hơn: 95% → 94% */
+        opacity: 0;
+        transform: translateX(0);
+    }
+    95% {
+        opacity: 1;               /* Opacity tối đa */
+        transform: translateX(-15px);  /* Tăng từ -10px → -15px */
+    }
+    96% {
+        transform: translateX(15px);   /* Tăng từ 10px → 15px */
+    }
+    97% {
+        transform: translateX(-8px);   /* Tăng từ -5px → -8px */
+    }
+}
+
+/* ========================================
+   CONTACT SECTION PIXEL EFFECTS
+   ======================================== */
+
+.contact-section {
+    position: relative;
+}
+
+.contact-pixel-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Radar Sweep Effect */
+.contact-radar {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;                  /* Tăng từ 300px → 400px */
+    height: 400px;
+    margin: -200px 0 0 -200px;     /* Adjust margin */
+    border: 3px solid rgba(0, 255, 255, 0.5);  /* Tăng từ 2px, 0.2 → 3px, 0.5 */
+    border-radius: 50%;
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.4),  /* Thêm glow */
+                inset 0 0 30px rgba(0, 255, 255, 0.2);
+}
+
+.contact-radar::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 4px;                    /* Tăng từ 2px → 4px */
+    height: 200px;                 /* Tăng từ 150px → 200px */
+    background: linear-gradient(to bottom, #00ffff, transparent);
+    transform-origin: top center;
+    animation: radar-sweep 4s linear infinite;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);  /* Thêm glow */
+}
+
+@keyframes radar-sweep {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Pulse Rings */
+.contact-pulse-rings {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.pulse-ring {
+    position: absolute;
+    border: 3px solid rgba(0, 255, 255, 0.6);  /* Tăng từ 2px, 0.3 → 3px, 0.6 */
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);  /* Thêm glow */
+    animation: pulse-expand 3s ease-out infinite;
+}
+
+@keyframes pulse-expand {
+    0% {
+        width: 30px;               /* Tăng từ 20px → 30px */
+        height: 30px;
+        opacity: 1;
+    }
+    100% {
+        width: 250px;              /* Tăng từ 200px → 250px */
+        height: 250px;
+        opacity: 0;
+    }
+}
+
+/* Signal Waves */
+.contact-signal-waves {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.signal-wave {
+    position: absolute;
+    width: 100%;
+    height: 4px;                   /* Tăng từ 2px → 4px */
+    background: linear-gradient(90deg, 
+        transparent,
+        rgba(0, 255, 255, 0.7),      /* Tăng từ 0.3 → 0.7 */
+        transparent
+    );
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);  /* Thêm glow */
+    animation: signal-move 3s ease-in-out infinite;
+}
+
+@keyframes signal-move {
+    0%, 100% {
+        transform: translateY(0) scaleX(0.5);
+        opacity: 0;
+    }
+    50% {
+        transform: translateY(50px) scaleX(1);
+        opacity: 1;
+    }
+}
+
+/* ========================================
+   FOOTER PIXEL EFFECTS
+   ======================================== */
+
+#footer {
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-pixel-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Star Field */
+.footer-starfield {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.footer-star {
+    position: absolute;
+    width: 4px;                    /* Tăng từ 2px → 4px */
+    height: 4px;
+    background: #00ffff;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.8);  /* Thêm glow */
+    animation: star-twinkle 3s ease-in-out infinite;
+}
+
+@keyframes star-twinkle {
+    0%, 100% {
+        opacity: 0.4;              /* Tăng từ 0.2 → 0.4 */
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(2);       /* Tăng từ 1.5 → 2 */
+    }
+}
+
+/* Bottom Waves */
+.footer-waves {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+}
+
+.footer-wave {
+    position: absolute;
+    bottom: 0;
+    width: 200%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 8px,
+        rgba(0, 255, 255, 0.15) 8px,    /* Tăng từ 0.05 → 0.15 */
+        rgba(0, 255, 255, 0.15) 12px    /* Tăng từ 10px → 12px */
+    );
+    animation: footer-wave-move 20s linear infinite;
+}
+
+@keyframes footer-wave-move {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* ========================================
+   HOVER & INTERACTION EFFECTS
+   ======================================== */
+
+/* Card Hover Glitch */
+.skill-category:hover,
+.project-card:hover,
+.contact-item:hover {
+    animation: card-glitch 0.3s ease;
+}
+
+@keyframes card-glitch {
+    0%, 100% {
+        transform: translateY(-5px);
+    }
+    25% {
+        transform: translateY(-7px) translateX(2px);
+    }
+    50% {
+        transform: translateY(-5px) translateX(-2px);
+    }
+    75% {
+        transform: translateY(-7px) translateX(1px);
+    }
+}
+
+/* Button Pixel Pulse */
+.btn:hover {
+    animation: btn-pixel-pulse 0.5s ease;
+}
+
+@keyframes btn-pixel-pulse {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(0, 255, 255, 0.8);
+    }
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+    .about-diagonal-lines,
+    .skills-hex-grid,
+    .projects-circuit-pattern,
+    .contact-radar {
+        opacity: 0.5;
+    }
+    
+    .orbit-pixel,
+    .data-stream,
+    .pulse-ring {
+        display: none;
+    }
+}
+
+/* Performance optimization */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+

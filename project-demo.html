@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TripHotel - Demo</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/header.css">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        .demo-page {
+            min-height: 100vh;
+            background: #000000;
+            padding-top: 100px;
+        }
+
+        .demo-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: var(--spacing-xl) var(--spacing-md);
+        }
+
+        .demo-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .demo-back {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            color: #00ffff;
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: var(--spacing-lg);
+            padding: var(--spacing-sm) var(--spacing-md);
+            background: rgba(0, 255, 255, 0.1);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: var(--radius-full);
+            backdrop-filter: blur(10px);
+            transition: all var(--transition-base);
+        }
+
+        .demo-back:hover {
+            color: #000000;
+            background: #00ffff;
+            border-color: #00ffff;
+            transform: translateX(-5px);
+            box-shadow: 0 4px 12px rgba(0, 255, 255, 0.4);
+        }
+
+        .demo-title {
+            font-size: var(--font-size-4xl);
+            font-weight: 700;
+            color: var(--text-white);
+            margin-bottom: var(--spacing-md);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+        }
+
+        .demo-subtitle {
+            color: #4a4a4a;
+            font-size: var(--font-size-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .demo-iframe-container {
+            position: relative;
+            width: 100%;
+            height: 800px;
+            background: rgba(0, 255, 255, 0.05);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 255, 255, 0.2);
+        }
+
+        .demo-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: #ffffff;
+        }
+
+        .demo-info {
+            margin-top: var(--spacing-xl);
+            padding: var(--spacing-lg);
+            background: rgba(0, 255, 255, 0.05);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: var(--radius-xl);
+        }
+
+        .demo-info h3 {
+            color: var(--text-white);
+            font-size: var(--font-size-xl);
+            margin-bottom: var(--spacing-md);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+
+        .demo-info h3 i {
+            color: #00ffff;
+        }
+
+        .demo-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-xs);
+            margin-top: var(--spacing-md);
+        }
+
+        .demo-tech-tag {
+            padding: var(--spacing-xs) var(--spacing-sm);
+            background: rgba(0, 255, 255, 0.1);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: var(--radius-full);
+            color: #00ffff;
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+        }
+
+        .demo-description {
+            color: #4a4a4a;
+            line-height: 1.8;
+            margin-top: var(--spacing-md);
+        }
+
+        /* Floating Back Button */
+        .demo-back-floating {
+            position: fixed;
+            top: 100px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 255, 255, 0.2);
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(0, 255, 255, 0.4);
+            border-radius: 50%;
+            color: #00ffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.3rem;
+            z-index: 9999;
+            transition: all var(--transition-base);
+            box-shadow: 0 4px 20px rgba(0, 255, 255, 0.2);
+        }
+
+        .demo-back-floating:hover {
+            background: #00ffff;
+            color: #000000;
+            border-color: #00ffff;
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(0, 255, 255, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .demo-page {
+                padding-top: 80px;
+            }
+
+            .demo-container {
+                padding: var(--spacing-lg) var(--spacing-sm);
+            }
+
+            .demo-iframe-container {
+                height: 600px;
+            }
+
+            .demo-title {
+                font-size: var(--font-size-2xl);
+            }
+
+            .demo-back-floating {
+                top: 80px;
+                left: 15px;
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background Effects -->
+    <div class="gradient-bg"></div>
+    <div class="grid-bg"></div>
+    
+    <!-- Header/Navigation -->
+    <header id="header"></header>
+
+    <!-- Floating Back Button -->
+    <a href="index.html#projects" class="demo-back-floating" title="Quay lại Dự Án">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+
+    <!-- Demo Page Content -->
+    <div class="demo-page">
+        <div class="demo-container">
+            <div class="demo-header">
+                <a href="index.html#projects" class="demo-back">
+                    <i class="fas fa-arrow-left"></i> Quay lại Dự Án
+                </a>
+                <h1 class="demo-title">TripHotel - Demo</h1>
+                <p class="demo-subtitle">Ứng dụng đặt phòng khách sạn và du lịch</p>
+            </div>
+
+            <div class="demo-iframe-container">
+                <iframe 
+                    id="demoIframe"
+                    class="demo-iframe" 
+                    src=""
+                    title="TripHotel Demo"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <div class="demo-info">
+                <h3>
+                    <i class="fas fa-info-circle"></i>
+                    Thông Tin Dự Án
+                </h3>
+                <p class="demo-description" id="demoDescription">
+                    TripHotel là ứng dụng đặt phòng khách sạn và du lịch với giao diện hiện đại, dễ sử dụng. 
+                    Ứng dụng cho phép người dùng tìm kiếm, so sánh và đặt phòng khách sạn một cách nhanh chóng và tiện lợi.
+                </p>
+                <div class="demo-tech" id="demoTech"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="js/data.js"></script>
+    <script src="js/components/header.js"></script>
+    <script src="js/background-effects.js"></script>
+    <script src="js/main.js"></script>
+    
+    <script>
+        // Load project data
+        function loadProjectDemo() {
+            const project = portfolioData.projects.find(p => p.title === 'TripHotel');
+            
+            if (!project) {
+                window.location.href = 'index.html#projects';
+                return;
+            }
+
+            // Set page title
+            document.title = `${project.title} - Demo`;
+
+            // Set description
+            document.getElementById('demoDescription').textContent = project.description;
+
+            // Set technologies
+            const techTags = project.technologies.map(tech => 
+                `<span class="demo-tech-tag">${tech}</span>`
+            ).join('');
+            document.getElementById('demoTech').innerHTML = techTags;
+
+            // Set iframe source - You can replace this with your actual demo URL
+            const iframe = document.getElementById('demoIframe');
+            // Option 1: Use external demo URL
+            // iframe.src = 'https://your-demo-url.com';
+            
+            // Option 2: Use local demo file
+            // iframe.src = 'demo/triphotel/index.html';
+            
+            // Option 3: Show placeholder message
+            iframe.style.display = 'none';
+            const placeholder = document.createElement('div');
+            placeholder.style.cssText = `
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                color: var(--text-white);
+                background: rgba(0, 255, 255, 0.05);
+                padding: var(--spacing-xl);
+                text-align: center;
+            `;
+            placeholder.innerHTML = `
+                <i class="fas fa-laptop-code" style="font-size: 4rem; color: #00ffff; margin-bottom: var(--spacing-md);"></i>
+                <h2 style="color: var(--text-white); margin-bottom: var(--spacing-sm);">TripHotel Demo</h2>
+                <p style="color: var(--text-light); margin-bottom: var(--spacing-md);">
+                    Để xem demo, vui lòng thêm URL demo vào file project-demo.html
+                </p>
+                <p style="color: var(--text-light); font-size: 0.9rem;">
+                    Thay đổi dòng: iframe.src = 'your-demo-url-here';
+                </p>
+            `;
+            document.querySelector('.demo-iframe-container').appendChild(placeholder);
+        }
+
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            renderHeader();
+            loadProjectDemo();
+        });
+    </script>
+</body>
+</html>
+

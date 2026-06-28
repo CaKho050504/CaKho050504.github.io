@@ -1,0 +1,800 @@
+/* Hobbies Section Styles */
+.hobbies-section {
+    background: #fff8dc;
+    position: relative;
+}
+
+.hobbies-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.hobby-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: all var(--transition-base);
+    border: 2px solid rgba(0, 255, 255, 0.3);
+    position: relative;
+    cursor: pointer;
+}
+
+.hobby-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 50px rgba(0, 255, 255, 0.4);
+    border-color: rgba(0, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.hobby-image {
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hobby-image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 0, 0, 0.3), rgba(220, 20, 60, 0.3));
+    backdrop-filter: blur(2px);
+}
+
+.hobby-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 15px,
+        rgba(0, 0, 0, 0.1) 15px,
+        rgba(0, 0, 0, 0.1) 30px
+    );
+    z-index: 1;
+}
+
+.hobby-icon-badge {
+    position: relative;
+    z-index: 2;
+    width: 80px;
+    height: 80px;
+    background: rgba(0, 255, 255, 0.2);
+    border: 3px solid rgba(0, 255, 255, 0.5);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+.hobby-icon-badge i {
+    font-size: 2.5rem;
+    color: #1a1a1a;
+    filter: drop-shadow(0 0 5px rgba(0, 255, 255, 0.5));
+}
+
+.hobby-click-hint {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+    color: #000000;
+    font-size: var(--font-size-sm);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    transition: all var(--transition-base);
+}
+
+.hobby-card:hover .hobby-click-hint {
+    background: rgba(0, 255, 255, 0.2);
+    border-color: rgba(0, 255, 255, 0.5);
+    color: #1a1a1a;
+    transform: scale(1.05);
+}
+
+/* Section subtitle */
+.section-subtitle {
+    text-align: center;
+    color: #4a4a4a;
+    font-size: var(--font-size-base);
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.8;
+}
+
+.click-info {
+    display: block;
+    margin-top: var(--spacing-xs);
+    color: #ffd700;
+    font-size: var(--font-size-sm);
+}
+
+.hobby-content {
+    padding: var(--spacing-md);
+}
+
+.hobby-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-sm);
+}
+
+.hobby-name {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.hobby-level {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: rgba(0, 255, 255, 0.15);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-sm);
+    color: rgba(0, 255, 255, 0.9);
+    font-weight: 600;
+    border: 1px solid rgba(0, 255, 255, 0.4);
+    white-space: nowrap;
+}
+
+.hobby-description {
+    color: #4a4a4a;
+    line-height: 1.8;
+    margin-bottom: var(--spacing-md);
+}
+
+.hobby-activities {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+}
+
+.activity-tag {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: rgba(0, 255, 255, 0.1);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-sm);
+    color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    transition: all var(--transition-fast);
+    cursor: default;
+}
+
+.activity-tag:hover {
+    background: rgba(0, 255, 255, 0.2);
+    border-color: rgba(0, 255, 255, 0.5);
+    color: #1a1a1a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 255, 255, 0.3);
+}
+
+/* Animated Icon */
+.hobby-card:hover .hobby-icon {
+    animation: hobby-icon-bounce 0.6s ease;
+}
+
+@keyframes hobby-icon-bounce {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-10px) rotate(-5deg);
+    }
+    50% {
+        transform: translateY(0) rotate(0deg);
+    }
+    75% {
+        transform: translateY(-5px) rotate(5deg);
+    }
+}
+
+/* Hobby Stats */
+.hobby-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid rgba(255, 0, 0, 0.2);
+}
+
+.hobby-stat {
+    text-align: center;
+}
+
+.hobby-stat-value {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: #ff0000;
+    display: block;
+}
+
+.hobby-stat-label {
+    font-size: var(--font-size-sm);
+    color: #b0b0b0;
+}
+
+/* ========================================
+   HOBBY MODAL & SLIDER STYLES
+   ======================================== */
+
+/* Modal Overlay */
+.hobby-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(20px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    padding: var(--spacing-md);
+}
+
+.hobby-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Modal Content */
+.hobby-modal-content {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    max-height: 90vh;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    backdrop-filter: blur(40px) saturate(180%);
+    border-radius: var(--radius-xl);
+    border: 2px solid rgba(0, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(0, 255, 255, 0.3);
+    overflow: hidden;
+    transform: scale(0.9) translateY(50px);
+    transition: transform 0.3s ease;
+}
+
+.hobby-modal.active .hobby-modal-content {
+    transform: scale(1) translateY(0);
+    animation: modalSlideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes modalSlideUp {
+    from {
+        transform: scale(0.9) translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Close Button */
+.hobby-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 0, 0, 0.2);
+    backdrop-filter: blur(15px);
+    border: 2px solid rgba(255, 0, 0, 0.3);
+    border-radius: 50%;
+    color: #ffffff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 10001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-base);
+}
+
+.hobby-modal-close:hover {
+    background: rgba(255, 0, 0, 0.4);
+    border-color: #ff0000;
+    transform: rotate(90deg) scale(1.1);
+}
+
+/* Modal Header */
+.hobby-modal-header {
+    padding: var(--spacing-lg);
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hobby-modal-header h2 {
+    color: #1a1a1a;
+    font-size: var(--font-size-3xl);
+    margin-bottom: var(--spacing-sm);
+}
+
+.hobby-modal-header h2 i {
+    color: rgba(0, 255, 255, 0.8);
+    margin-right: var(--spacing-xs);
+}
+
+.hobby-modal-header p {
+    color: var(--text-light);
+    font-size: var(--font-size-base);
+}
+
+/* Slider Container */
+.hobby-modal-slider {
+    position: relative;
+    padding: var(--spacing-lg);
+}
+
+/* Image Counter */
+.hobby-image-counter {
+    position: absolute;
+    top: var(--spacing-lg);
+    right: var(--spacing-lg);
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(15px);
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--radius-full);
+    color: #1a1a1a;
+    font-size: var(--font-size-sm);
+    z-index: 10;
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: all var(--transition-base);
+}
+
+.hobby-image-counter:hover {
+    background: rgba(0, 0, 0, 0.85);
+    border-color: rgba(0, 255, 255, 0.5);
+    transform: scale(1.05);
+}
+
+.hobby-image-counter .current-slide {
+    color: rgba(0, 255, 255, 0.9);
+    font-weight: bold;
+    font-size: var(--font-size-base);
+}
+
+.hobby-image-counter .total-slides {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Main Slider */
+.hobby-slider-container {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--spacing-md);
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(0, 255, 255, 0.1);
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+.hobby-slider-track {
+    display: flex;
+    width: calc(100% - 140px);
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+    flex: 1;
+}
+
+.hobby-slide {
+    min-width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.hobby-slide.active {
+    opacity: 1;
+}
+
+.hobby-slide.entering {
+    animation: slideFadeIn 0.5s ease-out;
+}
+
+@keyframes slideFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.hobby-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+/* Loading state */
+.hobby-slide::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(0, 255, 255, 0.2);
+    border-top-color: rgba(0, 255, 255, 0.8);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    opacity: 0;
+    z-index: 1;
+}
+
+.hobby-slide.loading::before {
+    opacity: 1;
+}
+
+.hobby-slide.loaded::before {
+    opacity: 0;
+    animation: none;
+}
+
+@keyframes spin {
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.hobby-slide.zoomed {
+    cursor: zoom-out;
+    overflow: hidden;
+}
+
+.hobby-slide.zoomed img {
+    transform: scale(2.5);
+    cursor: zoom-out;
+    transition: transform 0.3s ease-out;
+    transform-origin: center center;
+}
+
+/* Zoom Hint - Improved */
+.hobby-zoom-hint {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(15px);
+    padding: 0.8rem 1.5rem;
+    border-radius: var(--radius-full);
+    color: rgba(255, 255, 255, 0.95);
+    font-size: var(--font-size-sm);
+    border: 1px solid rgba(0, 255, 255, 0.4);
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    opacity: 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+}
+
+.hobby-slide:hover .hobby-zoom-hint {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-5px);
+}
+
+.hobby-zoom-hint i {
+    color: rgba(0, 255, 255, 0.9);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.hobby-zoom-hint span {
+    font-weight: 500;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.hobby-slide.zoomed .hobby-zoom-hint {
+    display: none;
+}
+
+.hobby-slide.zoomed {
+    cursor: zoom-out;
+}
+
+/* Slider Controls - Positioned Inside Container */
+.hobby-slider-btn {
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(0, 255, 255, 0.4);
+    border-radius: 50%;
+    color: #ffffff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    z-index: 10;
+    flex-shrink: 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    opacity: 0.7;
+}
+
+.hobby-slider-btn::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: rgba(0, 255, 255, 0.2);
+    transform: scale(0);
+    transition: transform 0.3s ease;
+    z-index: -1;
+}
+
+.hobby-slider-container:hover .hobby-slider-btn {
+    opacity: 1;
+}
+
+.hobby-slider-btn:hover {
+    background: rgba(0, 255, 255, 0.3);
+    border-color: rgba(0, 255, 255, 0.8);
+    transform: scale(1.15);
+    box-shadow: 0 6px 30px rgba(0, 255, 255, 0.6);
+}
+
+.hobby-slider-btn:hover::before {
+    transform: scale(1.4);
+}
+
+.hobby-slider-btn:active {
+    transform: scale(0.9);
+}
+
+.hobby-slider-btn:disabled {
+    opacity: 0.2;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.hobby-slider-btn i {
+    position: relative;
+    z-index: 1;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5));
+    transition: transform 0.3s ease;
+}
+
+.hobby-slider-btn:hover i {
+    transform: scale(1.2);
+}
+
+.hobby-prev-btn {
+    margin-right: 10px;
+}
+
+.hobby-next-btn {
+    margin-left: 10px;
+}
+
+/* Thumbnails */
+.hobby-thumbnails {
+    display: flex;
+    gap: var(--spacing-sm);
+    overflow-x: auto;
+    padding: var(--spacing-sm) 0;
+    margin-bottom: var(--spacing-md);
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 255, 255, 0.3) transparent;
+}
+
+.hobby-thumbnails::-webkit-scrollbar {
+    height: 6px;
+}
+
+.hobby-thumbnails::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 3px;
+}
+
+.hobby-thumbnails::-webkit-scrollbar-thumb {
+    background: rgba(0, 255, 255, 0.3);
+    border-radius: 3px;
+}
+
+.hobby-thumbnail {
+    min-width: 80px;
+    height: 80px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transition: all var(--transition-base);
+    position: relative;
+}
+
+.hobby-thumbnail:hover {
+    border-color: rgba(0, 255, 255, 0.5);
+    transform: scale(1.1);
+}
+
+.hobby-thumbnail.active {
+    border-color: rgba(0, 255, 255, 0.9);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5), 0 0 40px rgba(0, 255, 255, 0.2);
+    transform: scale(1.08);
+    background: rgba(0, 255, 255, 0.1);
+}
+
+.hobby-thumbnail.active::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border: 2px solid rgba(0, 255, 255, 0.6);
+    border-radius: var(--radius-md);
+    animation: thumbnailGlow 2s ease-in-out infinite;
+}
+
+@keyframes thumbnailGlow {
+    0%, 100% {
+        opacity: 0.6;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.02);
+    }
+}
+
+.hobby-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.thumbnail-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity var(--transition-base);
+}
+
+.hobby-thumbnail:hover .thumbnail-overlay {
+    opacity: 1;
+}
+
+/* Dots Navigation */
+.hobby-slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-xs);
+    flex-wrap: wrap;
+}
+
+.hobby-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.hobby-dot:hover {
+    background: rgba(0, 255, 255, 0.5);
+    transform: scale(1.2);
+}
+
+.hobby-dot.active {
+    background: rgba(0, 255, 255, 0.9);
+    width: 30px;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hobbies-container {
+        grid-template-columns: 1fr;
+    }
+
+    .hobby-modal-content {
+        max-height: 95vh;
+    }
+
+    .hobby-slider-container {
+        height: 300px;
+        padding: 0 5px;
+    }
+
+    .hobby-slider-track {
+        width: calc(100% - 110px);
+    }
+
+    .hobby-slider-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+        opacity: 0.8;
+    }
+
+    .hobby-prev-btn {
+        margin-right: 5px;
+    }
+
+    .hobby-next-btn {
+        margin-left: 5px;
+    }
+
+    .hobby-thumbnail {
+        min-width: 60px;
+        height: 60px;
+    }
+
+    .hobby-modal-header h2 {
+        font-size: var(--font-size-2xl);
+    }
+}
+

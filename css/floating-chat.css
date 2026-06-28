@@ -1,0 +1,97 @@
+/* Floating Buttons Styles */
+
+.floating-buttons-container {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 9999;
+}
+
+.floating-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: white;
+    transition: all 0.3s ease;
+    outline: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    min-width: 120px;
+    font-family: inherit;
+}
+
+.floating-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.floating-btn:active {
+    transform: translateY(-1px);
+}
+
+.floating-btn span {
+    flex: 1;
+    text-align: left;
+}
+
+.floating-btn i {
+    margin-left: 10px;
+    font-size: 1.1rem;
+}
+
+/* Scroll to Top Button - Black */
+.scroll-top-btn {
+    background: #000000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.scroll-top-btn.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-top-btn:hover {
+    background: #1a1a1a;
+}
+
+/* Contact Button - Orange/Yellow Theme */
+.contact-btn {
+    background: #ff6b35;
+}
+
+.contact-btn:hover {
+    background: #ff8c00;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .floating-buttons-container {
+        bottom: 20px;
+        right: 20px;
+        gap: 10px;
+    }
+
+    .floating-btn {
+        padding: 10px 16px;
+        font-size: 0.85rem;
+        min-width: 100px;
+    }
+
+    .floating-btn i {
+        font-size: 1rem;
+        margin-left: 8px;
+    }
+}
+

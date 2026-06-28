@@ -1,0 +1,61 @@
+/* ========================================
+   VISIBILITY FIX - Đảm bảo các elements quan trọng luôn hiển thị
+   ======================================== */
+
+/* Floating Chat Button - Always Visible */
+.floating-chat-button {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    z-index: 10001 !important;
+}
+
+/* Footer - Always Visible */
+footer,
+#footer {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 10 !important;
+    min-height: 200px !important;
+}
+
+/* Ensure footer content is visible */
+.footer-content,
+.footer-section,
+.footer-bottom {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Scroll to Top Button */
+.scroll-to-top {
+    display: flex !important;
+    z-index: 10000 !important;
+}
+
+.scroll-to-top.visible {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Override any hiding rules */
+/* Contact modal removed - contact section now displays directly on page */
+
+/* Ensure no other CSS hides these elements */
+* {
+    /* Don't hide floating chat button or footer */
+}
+
+.floating-chat-button,
+footer,
+#footer {
+    /* Force visibility */
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+

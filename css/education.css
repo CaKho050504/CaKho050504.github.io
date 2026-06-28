@@ -1,0 +1,284 @@
+/* Education Section Styles */
+
+.education-section {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.education-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.education-item {
+    background: rgba(255, 255, 255, 0.05);
+    border-left: 3px solid var(--primary-color);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-base);
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.education-item:hover {
+    background: rgba(255, 0, 0, 0.1);
+    transform: translateX(10px);
+}
+
+.education-content {
+    flex: 1;
+}
+
+.education-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--spacing-sm);
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+.education-logo {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem;
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-sm);
+}
+
+.education-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.education-logo i {
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.education-school {
+    color: #1a1a1a;
+    font-size: var(--font-size-xl);
+    margin-bottom: 0.25rem;
+}
+
+.education-degree {
+    color: #4a4a4a;
+    font-size: var(--font-size-base);
+    margin-bottom: var(--spacing-xs);
+}
+
+.education-duration {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    color: var(--primary-color);
+    font-size: var(--font-size-sm);
+}
+
+.education-gpa {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    color: var(--text-light);
+    font-size: var(--font-size-sm);
+    margin: var(--spacing-sm) 0;
+}
+
+.education-gpa i {
+    color: #ffd700;
+}
+
+.education-description {
+    color: #4a4a4a;
+    line-height: 1.8;
+    margin: var(--spacing-sm) 0;
+}
+
+.education-achievements {
+    margin-top: var(--spacing-md);
+}
+
+.education-achievements h4 {
+    color: #1a1a1a;
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-sm);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.education-achievements h4::after {
+    content: '💡 Click vào các mục có minh chứng để xem';
+    font-size: 0.7rem;
+    font-weight: normal;
+    color: rgba(255, 255, 255, 0.5);
+    margin-left: auto;
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .education-achievements h4::after {
+        display: none;
+    }
+}
+
+.achievement-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    color: var(--text-light);
+    margin-bottom: var(--spacing-xs);
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.achievement-item.clickable {
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.achievement-item.clickable:hover {
+    background: rgba(0, 255, 255, 0.1);
+    border-color: rgba(0, 255, 255, 0.4);
+    transform: translateX(5px);
+    box-shadow: 0 2px 10px rgba(0, 255, 255, 0.2);
+}
+
+.achievement-item i {
+    color: var(--primary-color);
+    font-size: 0.9rem;
+}
+
+.achievement-view-icon {
+    margin-left: auto !important;
+    color: rgba(0, 255, 255, 0.7) !important;
+    font-size: 0.85rem !important;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.achievement-item.clickable:hover .achievement-view-icon {
+    opacity: 1;
+}
+
+/* Achievement Modal */
+.achievement-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.achievement-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.achievement-modal-content {
+    background: rgba(10, 10, 10, 0.95);
+    border: 2px solid rgba(0, 255, 255, 0.3);
+    border-radius: 20px;
+    max-width: 900px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+    box-shadow: 0 20px 60px rgba(0, 255, 255, 0.3);
+}
+
+.achievement-modal.active .achievement-modal-content {
+    transform: scale(1);
+}
+
+.achievement-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 0, 0, 0.2);
+    border: 2px solid rgba(255, 0, 0, 0.4);
+    border-radius: 50%;
+    color: #ff4444;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.achievement-modal-close:hover {
+    background: rgba(255, 0, 0, 0.4);
+    border-color: #ff4444;
+    transform: rotate(90deg);
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+}
+
+.achievement-modal-body {
+    padding: 30px;
+}
+
+.achievement-modal-body h3 {
+    color: #1a1a1a;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.achievement-modal-image-container {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 2px solid rgba(0, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.achievement-modal-image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-height: 70vh;
+    object-fit: contain;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .achievement-modal-content {
+        width: 95%;
+        max-height: 95vh;
+    }
+    
+    .achievement-modal-body {
+        padding: 20px;
+    }
+    
+    .achievement-modal-body h3 {
+        font-size: 1.2rem;
+    }
+}
+

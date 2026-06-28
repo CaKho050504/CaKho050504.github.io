@@ -1,0 +1,50 @@
+/* ========================================
+   OVERRIDE: SIMPLIFIED BACKGROUND
+   Tắt các pattern phức tạp, chỉ giữ particles nhỏ
+   ======================================== */
+
+/* Tắt tất cả patterns phức tạp */
+.about-diagonal-lines,
+.skills-hexagon,
+.projects-circuit,
+.projects-glitch-bars,
+.glitch-bar,
+.hobbies-radar-sweep,
+.hobbies-radar-line,
+.contact-radar,
+.contact-radar::before,
+.footer-wave-pattern {
+    display: none !important;
+}
+
+/* Giảm độ rõ của particles */
+.about-pixel,
+.pixel,
+.orbit-pixel,
+.signal-wave,
+.star-pixel {
+    width: 4px !important;
+    height: 4px !important;
+    opacity: 0.2 !important;
+    box-shadow: 0 0 3px rgba(0, 255, 255, 0.2) !important;
+}
+
+/* Giảm độ rõ của data streams */
+.data-stream {
+    opacity: 0.2 !important;
+    width: 1px !important;
+    box-shadow: 0 0 3px rgba(0, 255, 255, 0.2) !important;
+}
+
+/* Giảm pulse rings */
+.pulse-ring {
+    opacity: 0.3 !important;
+    border-width: 1px !important;
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.2) !important;
+}
+
+/* Giữ background đơn giản giống Hero section */
+section {
+    background: transparent !important;
+}
+
