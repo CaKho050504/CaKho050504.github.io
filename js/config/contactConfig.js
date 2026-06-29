@@ -1,8 +1,8 @@
 const contactConfig = {
     api: {
-        endpoint: "",
-        enabled: false
+        endpoint: "/api/contact",
+        enabled: true
     },
     socialPlatforms: ["GitHub", "LinkedIn", "Facebook"],
-    fallbackMessage: "Chức năng gửi thông tin đang được cập nhật. Vui lòng liên hệ trực tiếp qua email."
+    fallbackMessage: "Không thể gửi thông tin lúc này. Vui lòng thử lại hoặc liên hệ trực tiếp qua email."
 };

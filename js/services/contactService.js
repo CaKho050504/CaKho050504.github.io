@@ -4,7 +4,7 @@ async function submitContactForm(payload) {
         phone: payload.phone.trim(),
         email: payload.email.trim(),
         message: payload.message.trim(),
-        createdAt: new Date().toISOString()
+        website: (payload.website || "").trim()
     };
 
     if (!contactConfig.api.enabled || !contactConfig.api.endpoint) {

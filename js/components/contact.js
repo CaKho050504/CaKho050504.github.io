@@ -13,8 +13,13 @@ function renderContact() {
             <span>Liên hệ</span>
         </button>
 
-        <section class="contact-widget" aria-label="Khung chat liên hệ" aria-hidden="true">
-            <header class="contact-widget-header">
+        <section class="contact-widget contact-chat-widget" aria-label="Khung chat liên hệ" aria-hidden="true">
+            <button type="button" class="contact-widget-minibar" aria-label="Mở lại khung liên hệ">
+                <i class="fas fa-comments" aria-hidden="true"></i>
+                <span>Liên hệ với tôi</span>
+            </button>
+
+            <header class="contact-widget-header contact-chat-header">
                 <div>
                     <h2>Liên hệ với tôi</h2>
                     <p>Tôi sẽ phản hồi sớm nhất có thể</p>
@@ -29,7 +34,7 @@ function renderContact() {
                 </div>
             </header>
 
-            <div class="contact-widget-body">
+            <div class="contact-widget-body contact-chat-body">
                 <div class="chat-greeting">
                     <strong>Xin chào 👋</strong>
                     <p>Bạn có thể để lại thông tin để tôi liên hệ lại với bạn.</p>
@@ -39,28 +44,32 @@ function renderContact() {
                 <form class="contact-widget-form" id="contactForm" novalidate>
                     <div class="form-field">
                         <label for="contactName">Họ và tên *</label>
-                        <input id="contactName" name="name" type="text" autocomplete="name" placeholder="Nhập họ và tên của bạn" aria-describedby="contactNameError">
+                        <input class="contact-input" id="contactName" name="name" type="text" autocomplete="name" maxlength="100" placeholder="Nhập họ và tên của bạn" aria-describedby="contactNameError">
                         <small class="field-error" id="contactNameError"></small>
                     </div>
                     <div class="form-field">
                         <label for="contactPhone">Số điện thoại *</label>
-                        <input id="contactPhone" name="phone" type="tel" autocomplete="tel" placeholder="Ví dụ: 0901 234 567" aria-describedby="contactPhoneError">
+                        <input class="contact-input" id="contactPhone" name="phone" type="tel" autocomplete="tel" maxlength="20" placeholder="Ví dụ: 0901 234 567" aria-describedby="contactPhoneError">
                         <small class="field-error" id="contactPhoneError"></small>
                     </div>
                     <div class="form-field">
                         <label for="contactEmail">Email</label>
-                        <input id="contactEmail" name="email" type="email" autocomplete="email" placeholder="example@email.com" aria-describedby="contactEmailError">
+                        <input class="contact-input" id="contactEmail" name="email" type="email" autocomplete="email" maxlength="120" placeholder="example@email.com" aria-describedby="contactEmailError">
                         <small class="field-error" id="contactEmailError"></small>
                     </div>
                     <div class="form-field">
                         <label for="contactMessage">Nội dung cần trao đổi *</label>
-                        <textarea id="contactMessage" name="message" rows="4" placeholder="Bạn muốn trao đổi về vấn đề gì?" aria-describedby="contactMessageError"></textarea>
+                        <textarea class="contact-textarea" id="contactMessage" name="message" rows="4" maxlength="2000" placeholder="Bạn muốn trao đổi về vấn đề gì?" aria-describedby="contactMessageError"></textarea>
                         <small class="field-error" id="contactMessageError"></small>
+                    </div>
+                    <div class="form-field contact-honeypot" aria-hidden="true">
+                        <label for="contactWebsite">Website</label>
+                        <input id="contactWebsite" name="website" type="text" tabindex="-1" autocomplete="off" maxlength="200">
                     </div>
                 </form>
             </div>
 
-            <footer class="contact-widget-footer">
+            <footer class="contact-widget-footer contact-chat-footer">
                 <button class="btn btn-primary contact-submit-btn" type="submit" form="contactForm">
                     <i class="fas fa-paper-plane" aria-hidden="true"></i>
                     <span>Gửi thông tin</span>
@@ -75,12 +84,16 @@ function renderContact() {
     document.querySelector(".floating-contact-btn").addEventListener("click", openContactWidget);
     document.querySelector(".contact-widget-minimize").addEventListener("click", minimizeContactWidget);
     document.querySelector(".contact-widget-close").addEventListener("click", closeContactWidget);
+    document.querySelector(".contact-widget-minibar").addEventListener("click", openContactWidget);
 
     const form = document.getElementById("contactForm");
     form.addEventListener("submit", handleContactSubmit);
     form.querySelectorAll("input, textarea").forEach((field) => {
         field.addEventListener("input", () => validateContactField(field));
-        field.addEventListener("blur", () => validateContactField(field));
+        field.addEventListener("blur", () => {
+            field.dataset.touched = "true";
+            validateContactField(field);
+        });
     });
 }
 
@@ -91,9 +104,8 @@ function openContactWidget() {
     widget.classList.add("open");
     widget.classList.remove("minimized");
     widget.setAttribute("aria-hidden", "false");
-    document.body.classList.add("contact-widget-open");
+    document.body.classList.add("contact-widget-active");
     trigger.setAttribute("aria-expanded", "true");
-    setTimeout(() => document.getElementById("contactName")?.focus(), 120);
 }
 
 function minimizeContactWidget() {
@@ -101,10 +113,10 @@ function minimizeContactWidget() {
     const trigger = document.querySelector(".floating-contact-btn");
     widget.classList.remove("open");
     widget.classList.add("minimized");
-    widget.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("contact-widget-open");
+    widget.setAttribute("aria-hidden", "false");
+    document.body.classList.add("contact-widget-active");
     trigger.setAttribute("aria-expanded", "false");
-    trigger.focus();
+    document.querySelector(".contact-widget-minibar")?.focus();
 }
 
 function closeContactWidget() {
@@ -112,7 +124,7 @@ function closeContactWidget() {
     const trigger = document.querySelector(".floating-contact-btn");
     widget.classList.remove("open", "minimized");
     widget.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("contact-widget-open");
+    document.body.classList.remove("contact-widget-active");
     trigger.setAttribute("aria-expanded", "false");
     (contactWidgetLastFocus || trigger).focus();
 }
@@ -123,9 +135,13 @@ function getContactErrors(values) {
     const errors = {};
 
     if (values.name.trim().length < 2) errors.name = "Họ tên cần tối thiểu 2 ký tự.";
+    if (values.name.trim().length > 100) errors.name = "Họ tên không được vượt quá 100 ký tự.";
     if (!phonePattern.test(values.phone.trim())) errors.phone = "Vui lòng nhập số điện thoại Việt Nam hợp lệ.";
+    if (values.phone.trim().length > 20) errors.phone = "Số điện thoại quá dài.";
     if (values.email.trim() && !emailPattern.test(values.email.trim())) errors.email = "Email chưa đúng định dạng.";
+    if (values.email.trim().length > 120) errors.email = "Email không được vượt quá 120 ký tự.";
     if (values.message.trim().length < 10) errors.message = "Nội dung cần tối thiểu 10 ký tự.";
+    if (values.message.trim().length > 2000) errors.message = "Nội dung không được vượt quá 2000 ký tự.";
 
     return errors;
 }
@@ -135,15 +151,20 @@ function getContactValues(form) {
         name: form.name.value,
         phone: form.phone.value,
         email: form.email.value,
-        message: form.message.value
+        message: form.message.value,
+        website: form.website.value
     };
 }
 
-function setFieldError(form, name, message = "") {
+function setFieldError(form, name, message = "", force = false) {
     const field = form[name];
     const error = document.getElementById(`contact${name[0].toUpperCase()}${name.slice(1)}Error`);
-    field.setAttribute("aria-invalid", message ? "true" : "false");
-    error.textContent = message;
+    const shouldShow = force || field.dataset.touched === "true" || form.dataset.submitted === "true";
+    const visibleMessage = shouldShow ? message : "";
+
+    field.setAttribute("aria-invalid", visibleMessage ? "true" : "false");
+    field.classList.toggle("is-invalid", Boolean(visibleMessage));
+    error.textContent = visibleMessage;
 }
 
 function validateContactField(field) {
@@ -154,8 +175,17 @@ function validateContactField(field) {
 
 function validateContactForm(form) {
     const errors = getContactErrors(getContactValues(form));
-    ["name", "phone", "email", "message"].forEach((name) => setFieldError(form, name, errors[name]));
+    form.dataset.submitted = "true";
+    ["name", "phone", "email", "message"].forEach((name) => setFieldError(form, name, errors[name], true));
     return Object.keys(errors).length === 0;
+}
+
+function clearContactValidation(form) {
+    form.dataset.submitted = "";
+    ["name", "phone", "email", "message"].forEach((name) => {
+        form[name].dataset.touched = "";
+        setFieldError(form, name, "", true);
+    });
 }
 
 async function handleContactSubmit(event) {
@@ -183,12 +213,13 @@ async function handleContactSubmit(event) {
             message.textContent = "Cảm ơn bạn! Tôi đã nhận được thông tin và sẽ phản hồi sớm nhất.";
             message.className = "form-message success";
             form.reset();
+            clearContactValidation(form);
         } else {
             message.textContent = contactConfig.fallbackMessage;
             message.className = "form-message notice";
         }
     } catch (error) {
-        message.textContent = "Chưa thể gửi thông tin lúc này. Vui lòng liên hệ trực tiếp qua email.";
+        message.textContent = contactConfig.fallbackMessage;
         message.className = "form-message error";
     } finally {
         button.disabled = false;

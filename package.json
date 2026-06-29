@@ -1,0 +1,26 @@
+{
+  "name": "portfolio-website",
+  "version": "1.0.0",
+  "description": "Modern and responsive portfolio website built with HTML, CSS, and JavaScript",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx vercel dev",
+    "dev:static": "npx live-server . --port=3000",
+    "preview": "npx serve . -p 3000"
+  },
+  "keywords": [
+    "portfolio",
+    "website",
+    "personal",
+    "html",
+    "css",
+    "javascript",
+    "responsive"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "nodemailer": "^9.0.1"
+  }
+}
